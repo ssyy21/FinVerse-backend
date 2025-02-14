@@ -9,8 +9,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("Backend is live! 🎉");
+});
+
+
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
     // Remove deprecated options
   })
   .then(() => console.log("MongoDB connected successfully"))
